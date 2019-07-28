@@ -19,6 +19,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel'; //Thank From 
 // dotStyle;
 // paginationBoxVerticalPadding;
 // circleLoop;
+// ImageComponent;
 
 const width = Dimensions.get('window').width;
 export class SliderBox extends Component {
@@ -47,12 +48,13 @@ export class SliderBox extends Component {
     }
   }
   _renderItem({ item, index }) {
+    const { ImageComponent } = this.props;
     return (
       <TouchableWithoutFeedback
         key={index}
         onPress={() => this.onCurrentImagePressedHandler(index)}
       >
-        <Image
+        <ImageComponent
           style={{ width: null, height: this.props.sliderBoxHeight || 200 }}
           source={{ uri: item }}
         />
@@ -105,6 +107,10 @@ export class SliderBox extends Component {
 const colors = {
   dotColors: '#BDBDBD',
   white: '#FFFFFF'
+};
+
+SliderBox.defaultProps = {
+  ImageComponent: Image
 };
 
 export const styles = StyleSheet.create({
