@@ -85,21 +85,25 @@ export class SliderBox extends Component {
   }
   render() {
     return (
-      <View style={{ borderRadius: 2 }}>
-        <Carousel
-          borderTopRightRadius={2}
-          borderTopLeftRadius={2}
-          ref={c => (this._ref = c)}
-          data={this.props.images}
-          renderItem={item => this._renderItem(item)}
-          onSnapToItem={index => this.setState({ currentImage: index })}
-          layout={'default'}
-          sliderWidth={this.props.parentWidth || width}
-          itemWidth={this.props.parentWidth || width}
-          loop={this.props.circleLoop || false}
-        />
-        {this.props.images.length > 1 && this.pagination}
-      </View>
+      <>
+        <View style={{ borderRadius: 2 }}>
+          <Carousel
+            borderTopRightRadius={2}
+            borderTopLeftRadius={2}
+            ref={c => (this._ref = c)}
+            data={this.props.images}
+            renderItem={item => this._renderItem(item)}
+            onSnapToItem={index => this.setState({ currentImage: index })}
+            layout={'default'}
+            sliderWidth={this.props.parentWidth || width}
+            itemWidth={this.props.parentWidth || width}
+            loop={this.props.circleLoop || false}
+          />
+        </View>
+        <View>
+          {this.props.images.length > 1 && this.pagination}
+        </View>
+      </>
     );
   }
 }
